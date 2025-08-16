@@ -5,43 +5,87 @@
   <title>Ejemplos DOM - Todo en uno</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 20px;
+      background: #f4f4f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #222;
     }
     section {
-      margin-bottom: 40px;
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
+      margin: 20px auto;
+      padding: 20px;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-bottom: 15px;
+      color: #444;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #4f46e5;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #3730a3;
     }
     #box {
       width: 100px;
       height: 100px;
       background: gray;
-      margin-top: 10px;
+      margin-top: 15px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    input {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    #greeting {
+      font-size: 18px;
+      font-weight: bold;
+      color: #2563eb;
     }
   </style>
 </head>
 <body>
   <h1>Ejemplos básicos del DOM</h1>
 
+  <!-- Ejemplo 1 -->
   <section id="ejemplo1">
     <h2>Ejemplo 1: Detectar un click</h2>
-    <button id="btn">Click!</button>
+    <button id="btn">Haz click aquí</button>
     <p id="output"></p>
   </section>
 
+  <!-- Ejemplo 2 -->
   <section id="ejemplo2">
     <h2>Ejemplo 2: Cambiar color con click</h2>
     <button id="colorBtn">Cambiar color</button>
     <div id="box"></div>
   </section>
 
+  <!-- Ejemplo 3 -->
   <section id="ejemplo3">
-    <h2>Ejemplo 3: Formulario cambia el texto</h2>
-    <input id="nameInput" type="text" placeholder="Escribe tu nombre">
-    <button id="sendBtn">Enviar</button>
-    <p id="greeting"></p>
+    <h2>Ejemplo 3: Formulario en vivo</h2>
+    <input id="nameInput" type="text" placeholder="Escribe tu nombre...">
+    <p id="greeting">👋 Hola!</p>
   </section>
 
   <script>
@@ -62,12 +106,11 @@
     });
 
     const input = document.getElementById("nameInput");
-    const sendBtn = document.getElementById("sendBtn");
     const greeting = document.getElementById("greeting");
 
-    sendBtn.addEventListener("click", () => {
-      const name = input.value;
-      greeting.textContent = `Hola, ${name}! 👋`;
+    input.addEventListener("input", () => {
+      const name = input.value.trim();
+      greeting.textContent = name ? `👋 Hola, ${name}!` : "👋 Hola!";
       console.log("Nombre ingresado:", name);
     });
   </script>
