@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplos DOM - Todo en uno</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    section {
+      margin-bottom: 40px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    #box {
+      width: 100px;
+      height: 100px;
+      background: gray;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ejemplos básicos del DOM</h1>
+
+  <section id="ejemplo1">
+    <h2>Ejemplo 1: Detectar un click</h2>
+    <button id="btn">Click!</button>
+    <p id="output"></p>
+  </section>
+
+  <section id="ejemplo2">
+    <h2>Ejemplo 2: Cambiar color con click</h2>
+    <button id="colorBtn">Cambiar color</button>
+    <div id="box"></div>
+  </section>
+
+  <section id="ejemplo3">
+    <h2>Ejemplo 3: Formulario cambia el texto</h2>
+    <input id="nameInput" type="text" placeholder="Escribe tu nombre">
+    <button id="sendBtn">Enviar</button>
+    <p id="greeting"></p>
+  </section>
+
+  <script>
+    const btn = document.getElementById("btn");
+    const output = document.getElementById("output");
+
+    btn.addEventListener("click", () => {
+      output.textContent = "¡Me clickeaste! 🎉";
+      console.log("Botón clickeado:", btn);
+    });
+
+    const colorBtn = document.getElementById("colorBtn");
+    const box = document.getElementById("box");
+
+    colorBtn.addEventListener("click", () => {
+      box.style.background = box.style.background === "red" ? "gray" : "red";
+      console.log("Color cambiado a:", box.style.background);
+    });
+
+    const input = document.getElementById("nameInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const greeting = document.getElementById("greeting");
+
+    sendBtn.addEventListener("click", () => {
+      const name = input.value;
+      greeting.textContent = `Hola, ${name}! 👋`;
+      console.log("Nombre ingresado:", name);
+    });
+  </script>
+</body>
+</html>
